@@ -27,7 +27,7 @@ class Lexer {
     }
 
     skipWhitespace() {
-      while(this.curChar == ' ' || this.curChar == '\t' || this.curChar == '\s')
+      while(this.curChar == ' ' || this.curChar == '\t' || this.curChar == '\s' || this.curChar == '\r')
         this.nextChar();
     }
 
@@ -190,5 +190,5 @@ class Lexer {
 };
 
 
-  module.exports = Lexer;
+  module.exports = {Lexer, TokenType};
   
