@@ -1,13 +1,12 @@
-PRINT "How many fibonacci numbers do you want?"
-INPUT nums
-PRINT ""
+PRINT "Enter a"
+INPUT a
+PRINT "Enter b"
+INPUT b
 
-LET a = 0
-LET b = 1
-WHILE nums > 0 REPEAT
-    PRINT a
-    LET c = a + b
-    LET a = b
-    LET b = c
-    LET nums = nums - 1
-ENDWHILE
+IF a>b THEN
+    PRINT "a is greater"
+ENDIF
+
+IF b>a THEN 
+    PRINT "b is greater"
+ENDIF
