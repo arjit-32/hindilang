@@ -6,7 +6,7 @@ class Parser {
 
         this.symbols = new Set();
         this.labelsDeclared = new Set();
-        this.labelsGotoed = new Set();
+        this.labelsGotoed = new Set(); 
 
         this.curtoken = null;
         this.peekToken = null;
@@ -73,8 +73,13 @@ class Parser {
         } else if(this.checkToken(TokenType.IF)){
             // console.log("STATEMENT-IF");
             this.nextToken();
+
+            this.match(TokenType.LPAREN);
             this.emitter.emit("if(");
             this.comparison();
+
+            this.match(TokenType.RPAREN);
+            // this.emitter.emit(")");
          
             this.match(TokenType.THEN); // If milgya to Then kha hai bhyi
             this.nl();
@@ -88,8 +93,13 @@ class Parser {
         } else if(this.checkToken(TokenType.WHILE)){
             // console.log("STATEMENT-WHILE");
             this.nextToken();
+            this.match(TokenType.LPAREN);
             this.emitter.emit("while(");
+            
             this.comparison();
+
+            this.match(TokenType.RPAREN);
+            // this.emitter.emit(")");
 
             this.match(TokenType.REPEAT);
             this.nl();
@@ -228,13 +238,19 @@ class Parser {
         if(this.checkToken(TokenType.NUMBER)){
             this.emitter.emit(this.curtoken.text); // Emit number
             this.nextToken();
-        }else if(this.checkToken(TokenType.IDENT)){
+        } else if(this.checkToken(TokenType.IDENT)){
             if(!this.symbols.has(this.curtoken.text)){
                 this.abort("Referncing variable before assignment: " + this.curtoken.text)
             }
             this.emitter.emit(this.curtoken.text); // Emit variable
             this.nextToken();
-        }else{
+        } else if (this.checkToken(TokenType.LPAREN)) {
+            this.nextToken(); 
+            this.emitter.emit("(");  
+            this.expression();  // Evaluate the expression inside parentheses
+            this.match(TokenType.RPAREN);  
+            this.emitter.emit(")");  
+        } else{
             this.abort("Unexpected token at " + this.curtoken.text);
         }
     }

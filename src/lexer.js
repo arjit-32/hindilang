@@ -55,7 +55,11 @@ class Lexer {
       this.skipWhitespace();
       this.skipComment();
 
-      if(this.curChar == '+'){
+      if (this.curChar == '(') {
+        token = new Token(this.curChar, TokenType.LPAREN);
+      } else if (this.curChar == ')') {
+        token = new Token(this.curChar, TokenType.RPAREN);
+      } else if(this.curChar == '+'){
         token = new Token(this.curChar, TokenType.PLUS)
       } else if(this.curChar == '-'){
         token = new Token(this.curChar, TokenType.MINUS)
@@ -184,7 +188,9 @@ class Lexer {
     LT: 208,
     LTEQ: 209,
     GT: 210,
-    GTEQ: 211
+    GTEQ: 211,
+    LPAREN: 212,  // (
+    RPAREN: 213   // )
 };
 
 
