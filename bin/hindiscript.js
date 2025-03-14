@@ -6,7 +6,7 @@ const Parser = require('../src/Parser');
 const Emitter = require('../src/emitter'); 
 
 if (process.argv.length < 3) {
-  console.error('Usage: hindiscript <file.hs>');
+  console.error('Usage: hindiscript <file.hindi>');
   process.exit(1);
 }
 

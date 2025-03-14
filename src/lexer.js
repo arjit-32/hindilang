@@ -109,33 +109,39 @@ class Lexer {
         }
         let tokenText = this.source.substring(startPos,this.curPos);
         token = new Token(tokenText, TokenType.STRING)
+      } else if (this.curChar == '{') {
+          token = new Token(this.curChar, TokenType.LBRACE);
+      } else if (this.curChar == '}') {
+          token = new Token(this.curChar, TokenType.RBRACE);
+      } else if (this.curChar == ';') {
+        token = new Token(this.curChar, TokenType.SEMICOLON);
       } else if(this.isDigit(this.curChar)){
-        let startPos = this.curPos;
-        while(this.isDigit(this.peek())){
-          this.nextChar();
-        }
-        if(this.peek() == '.'){
-          this.nextChar()
-          if(!this.isDigit(this.peek()))
-            this.abort("Illegal character in number: expected digit after decimal point.");
+          let startPos = this.curPos;
           while(this.isDigit(this.peek())){
-            this.nextChar()
+            this.nextChar();
           }
-        }
-        let tokenText = this.source.substring(startPos, this.curPos+1)
-        token = new Token(tokenText, TokenType.NUMBER)
-      }else if(this.isAlpha(this.curChar)){
-        let startPos = this.curPos;
-        while (this.isAlpha(this.peek())){
-          this.nextChar();
-        }
-        let tokenText = this.source.substring(startPos, this.curPos+1 );
-        let keyword = Token.checkIfKeyword(tokenText);
-        if(keyword == null)
-          token = new Token(tokenText, TokenType.IDENT);
-        else 
-          token = new Token(tokenText, keyword);
-      }else{
+          if(this.peek() == '.'){
+            this.nextChar()
+            if(!this.isDigit(this.peek()))
+              this.abort("Illegal character in number: expected digit after decimal point.");
+            while(this.isDigit(this.peek())){
+              this.nextChar()
+            }
+          }
+          let tokenText = this.source.substring(startPos, this.curPos+1)
+          token = new Token(tokenText, TokenType.NUMBER)
+      } else if(this.isAlpha(this.curChar)){
+          let startPos = this.curPos;
+          while (this.isAlpha(this.peek())){
+            this.nextChar();
+          }
+          let tokenText = this.source.substring(startPos, this.curPos+1 );
+          let keyword = Token.checkIfKeyword(tokenText);
+          if(keyword == null)
+            token = new Token(tokenText, TokenType.IDENT);
+          else 
+            token = new Token(tokenText, keyword);
+      } else{
           this.abort("Unknown Token: " + this.curChar)
       }
 
@@ -150,13 +156,9 @@ class Lexer {
         this.kind=tokenKind;
     }
     static checkIfKeyword(tokenText) {
-      for (let kind in TokenType) {
-          if (kind === tokenText && TokenType[kind] >= 100 && TokenType[kind] < 200) {
-              return TokenType[kind];
-          }
-      }
-      return null; // Return null if it's not a keyword
-  }
+      const upperToken = tokenText.toUpperCase(); // Ensure case insensitivity
+      return TokenType[upperToken] || null;  // lookup in TokenType
+    }
   }
 
   const TokenType = {
@@ -165,32 +167,33 @@ class Lexer {
     NUMBER: 1,
     IDENT: 2,
     STRING: 3,
+    
     // Keywords
-    LABEL: 101,
-    GOTO: 102,
-    PRINT: 103,
+    CHAPO: 103, // Print
     INPUT: 104,
-    LET: 105,
-    IF: 106,
-    THEN: 107,
-    ENDIF: 108,
-    WHILE: 109,
-    REPEAT: 110,
-    ENDWHILE: 111,
+    MANLO: 105, // Let
+    AGAR: 106, // If
+    JABTAK: 109,// While
+    
     // Operators
-    EQ: 201,
-    PLUS: 202,
-    MINUS: 203,
-    ASTERISK: 204,
-    SLASH: 205,
-    EQEQ: 206,
-    NOTEQ: 207,
-    LT: 208,
-    LTEQ: 209,
-    GT: 210,
-    GTEQ: 211,
-    LPAREN: 212,  // (
-    RPAREN: 213   // )
+    EQ: 201, // =
+    PLUS: 202, // +
+    MINUS: 203, // -
+    ASTERISK: 204, // *
+    SLASH: 205, // /
+    EQEQ: 206,// ==
+    NOTEQ: 207, // !=
+    LT: 208, // <
+    LTEQ: 209, // <=
+    GT: 210, // >
+    GTEQ: 211, // >=
+
+    // Symbols
+    LPAREN: 212, // (
+    RPAREN: 213, // )
+    LBRACE: 214, // {
+    RBRACE: 215,  // }
+    SEMICOLON: 216, // ;
 };
 
 

@@ -3,7 +3,7 @@ class Parser {
     constructor(lexer, emitter) {
         this.lexer = lexer;
         this.emitter = emitter;
-
+        
         this.symbols = new Set();
         this.labelsDeclared = new Set();
         this.labelsGotoed = new Set(); 
@@ -40,7 +40,6 @@ class Parser {
     }
 
     program() {
-        // console.log("PROGRAM");
 
         while(this.checkToken(TokenType.NEWLINE)){
             this.nextToken();
@@ -50,16 +49,10 @@ class Parser {
             this.statement();
         }
 
-        for (const label of this.labelsGotoed) {
-            if(!this.labelsDeclared.has(label)){
-                this.abort("Attempting to GOTO undeclared label: " + label);
-            }
-          }
     }
 
     statement() {
-        if (this.checkToken(TokenType.PRINT)) {
-            // console.log("STATEMENT-PRINT");
+        if (this.checkToken(TokenType.CHAPO)) {
             this.nextToken();
 
             if (this.checkToken(TokenType.STRING)) {
@@ -70,8 +63,8 @@ class Parser {
                 this.expression();
                 this.emitter.emitLine(");");
             }
-        } else if(this.checkToken(TokenType.IF)){
-            // console.log("STATEMENT-IF");
+            this.match(TokenType.SEMICOLON);
+        } else if(this.checkToken(TokenType.AGAR)){
             this.nextToken();
 
             this.match(TokenType.LPAREN);
@@ -79,19 +72,18 @@ class Parser {
             this.comparison();
 
             this.match(TokenType.RPAREN);
-            // this.emitter.emit(")");
          
-            this.match(TokenType.THEN); // If milgya to Then kha hai bhyi
+            this.match(TokenType.LBRACE); 
             this.nl();
             this.emitter.emitLine("){");
 
-            while(!this.checkToken(TokenType.ENDIF)){ // Jab tak EndIf nahi milta tb tk baaki statements padte jao
+            while(!this.checkToken(TokenType.RBRACE)){ // Jab tak EndIf nahi milta tb tk baaki statements padte jao
                 this.statement(); 
             }
-            this.match(TokenType.ENDIF);
+            this.match(TokenType.RBRACE);
             this.emitter.emitLine("}");
-        } else if(this.checkToken(TokenType.WHILE)){
-            // console.log("STATEMENT-WHILE");
+        } else if(this.checkToken(TokenType.JABTAK)){
+
             this.nextToken();
             this.match(TokenType.LPAREN);
             this.emitter.emit("while(");
@@ -99,37 +91,17 @@ class Parser {
             this.comparison();
 
             this.match(TokenType.RPAREN);
-            // this.emitter.emit(")");
 
-            this.match(TokenType.REPEAT);
+            this.match(TokenType.LBRACE);
             this.nl();
             this.emitter.emitLine("){");
 
-            while(!this.checkToken(TokenType.ENDWHILE)){
+            while(!this.checkToken(TokenType.RBRACE)){
                 this.statement();
             }
-            this.match(TokenType.ENDWHILE);
-            this.emitter.emitLine("}");
-        } else if(this.checkToken(TokenType.LABEL)){
-            // console.log("STATEMENT-LABEL");
-            this.nextToken();
-
-            // Making sure Label doesnt already exist
-            if(this.labelsDeclared.has(this.curtoken.text))
-                this.abort("Label already exists");
-            this.labelsDeclared.add(this.curtoken.text);
-
-            this.emitter.emitLine(`// Label: ${this.curtoken.text}`);
-            this.match(TokenType.IDENT);
-        } else if(this.checkToken(TokenType.GOTO)){
-            // console.log("STATEMENT-GOTO");
-            this.nextToken();
-            this.labelsGotoed.add(this.curtoken.text);
-            this.match(TokenType.IDENT);
-
-            this.emitter.emitLine(`goto ${this.curtoken.text};`);
-        } else if(this.checkToken(TokenType.LET)){
-            // console.log("STATEMENT-LET");
+            this.match(TokenType.RBRACE);
+            this.emitter.emitLine("}"); 
+        } else if(this.checkToken(TokenType.MANLO)){
             this.nextToken();
 
             const varName = this.curtoken.text;
@@ -144,6 +116,7 @@ class Parser {
 
             this.expression();
             this.emitter.emitLine(";");
+            this.match(TokenType.SEMICOLON);
         } else if(this.checkToken(TokenType.INPUT)){
             // console.log("STATEMENT-INPUT");
             this.nextToken();
@@ -162,7 +135,6 @@ class Parser {
     }
 
     nl() {
-        // console.log("NEWLINE");
         
         if (this.checkToken(TokenType.EOF)) {
             return;  // End of file, no need to match a newline
@@ -179,7 +151,6 @@ class Parser {
         return this.checkToken(TokenType.GT) || this.checkToken(TokenType.GTEQ) || this.checkToken(TokenType.LT) || this.checkToken(TokenType.LTEQ) || this.checkToken(TokenType.EQEQ) || this.checkToken(TokenType.NOTEQ)
     }
     comparison(){
-        // console.log("COMPARISON");
 
         this.expression();
 
@@ -199,7 +170,6 @@ class Parser {
     }
 
     expression(){
-        // console.log("EXPRESSION");
 
         this.term();
         while(this.checkToken(TokenType.PLUS) || this.checkToken(TokenType.MINUS)){
@@ -211,7 +181,6 @@ class Parser {
     }
 
     term(){
-        // console.log("TERM");
 
         this.unary();
         while(this.checkToken(TokenType.ASTERISK) || this.checkToken(TokenType.SLASH)){
@@ -223,7 +192,6 @@ class Parser {
     }
 
     unary(){
-        // console.log("UNARY");
 
         if(this.checkToken(TokenType.PLUS) || this.checkToken(TokenType.MINUS)){
             this.emitter.emit(this.curtoken.text); // Emit unary operator
@@ -233,14 +201,13 @@ class Parser {
     }
 
     primary(){
-        // console.log("PRIMARY (" + this.curtoken.text + ")");
 
         if(this.checkToken(TokenType.NUMBER)){
             this.emitter.emit(this.curtoken.text); // Emit number
             this.nextToken();
         } else if(this.checkToken(TokenType.IDENT)){
             if(!this.symbols.has(this.curtoken.text)){
-                this.abort("Referncing variable before assignment: " + this.curtoken.text)
+                this.abort("Referrencing variable before assignment: " + this.curtoken.text)
             }
             this.emitter.emit(this.curtoken.text); // Emit variable
             this.nextToken();

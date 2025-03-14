@@ -1,17 +1,12 @@
 {
   "name": "hindiscript",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/compiler.js",
+  "description": "A Hindi-inspired scripting language",
+  "main": "bin/hindiscript.js",
   "bin": {
-    "hindiscript": "./bin/hindiscript.js"
-  },
-  "scripts": {
-    "start": "node src/main.js",
-    "test": "mocha src/tests/"
+    "hindiscript": "bin/hindiscript.js"
   },
   "dependencies": {
-    "mocha": "^10.0.0"
   },
   "keywords": [],
   "author": "Arjit Sharma",
