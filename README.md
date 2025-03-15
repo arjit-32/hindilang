@@ -2,14 +2,14 @@
 
 A Hindi-inspired scripting language that transpiles to JavaScript. It is done as a Academic exercise to understand working of compilers and programming languages. I was inspired by Austin Henley's Teeny Tiny Compiler. 
 
-Features 🌟
-✅ Print Statements – Display output using CHAPO. 
-✅ Variables & Assignment – Declare variables with MANLO. 
-✅ User Input – Take input using PUCHO. 
-✅ Arithmetic Expressions – Perform calculations with +, -, *, /. 
-✅ Conditional Statements – Use AGAR (if) with {} blocks. 
-✅ Loops – Use JABTAK (while) for iterations. 
-✅ Comments – Use # for comments. 
+Features 🌟 <br>
+✅ Print Statements – Display output using CHAPO. <br>
+✅ Variables & Assignment – Declare variables with MANLO. <br>
+✅ User Input – Take input using PUCHO. <br>
+✅ Arithmetic Expressions – Perform calculations with +, -, *, /. <br>
+✅ Conditional Statements – Use AGAR (if) with {} blocks. <br>
+✅ Loops – Use JABTAK (while) for iterations. <br>
+✅ Comments – Use # for comments. <br>
 
 # Example Code
 
@@ -47,7 +47,7 @@ hindic myscript.hindi
 ```
 
 # How It Works 🔧
-- Lexer 🏷️ – Reads the source code character by character and converts it into tokens.
+- Lexer 🏷️ – Reads the source code character by character and converts it into tokens. 
 - Parser 📖 – Processes the tokens, checks syntax validity, and structures them into a parse tree.
 - Emitter 💡 – Converts SudoLanguage code into JavaScript for execution.
 
@@ -87,9 +87,9 @@ hindic myscript.hindi
 ```
 
 ## Parser Characteristics
-✔️ Top-Down Parsing – Starts from the highest-level structure (program) and drills down into finer details like expressions and numbers.
-✔️ Recursive Descent – The parser calls itself recursively to process different statements and expressions.
-✔️ LL(1) Parsing – Uses one token lookahead to determine the next action without backtracking.
+✔️ Top-Down Parsing – Starts from the highest-level structure (program) and drills down into finer details like expressions and numbers. <br>
+✔️ Recursive Descent – The parser calls itself recursively to process different statements and expressions. <br>
+✔️ LL(1) Parsing – Uses one token lookahead to determine the next action without backtracking. <br>
 
 
 # Contributing 🤝
