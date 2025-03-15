@@ -170,7 +170,7 @@ class Lexer {
     
     // Keywords
     CHAPO: 103, // Print
-    INPUT: 104,
+    PUCHO: 104,
     MANLO: 105, // Let
     AGAR: 106, // If
     JABTAK: 109,// While

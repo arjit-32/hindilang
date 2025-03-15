@@ -117,17 +117,23 @@ class Parser {
             this.expression();
             this.emitter.emitLine(";");
             this.match(TokenType.SEMICOLON);
-        } else if(this.checkToken(TokenType.INPUT)){
-            // console.log("STATEMENT-INPUT");
+        } else if(this.checkToken(TokenType.PUCHO)){
             this.nextToken();
 
             const inputVar = this.curtoken.text;
+            this.match(TokenType.IDENT);
+            this.match(TokenType.SEMICOLON);
+
+            this.emitter.emitLine(`const readline = require('readline-sync');`);
+
             if(!this.symbols.has(inputVar)){
                 this.symbols.add(inputVar);
+                this.emitter.emitLine(`let ${inputVar} = readline.question("Enter value for ${inputVar}: ");`);
+            }else{
+                this.emitter.emitLine(`${inputVar} = readline.question("Enter value for ${inputVar}: ");`);
             }
-            this.match(TokenType.IDENT);
 
-            this.emitter.emitLine(`let ${inputVar} = prompt("Enter ${inputVar}: ");`);
+            this.emitter.emitLine(`if (!isNaN(${inputVar})) { ${inputVar} = Number(${inputVar}); }`);
         } else {
             this.abort("Invalid Statement at " + this.curtoken.text);
         }

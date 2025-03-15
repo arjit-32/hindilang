@@ -1,14 +1,20 @@
 {
-  "name": "hindiscript",
-  "version": "1.0.0",
+  "name": "sudolang",
+  "version": "1.0.2",
   "description": "A Hindi-inspired scripting language",
-  "main": "bin/hindiscript.js",
   "bin": {
-    "hindiscript": "bin/hindiscript.js"
+    "hindic": "./bin/hindic.js"
   },
+  "preferGlobal": true,
   "dependencies": {
+    "readline-sync": "^1.4.10"
   },
-  "keywords": [],
+  "keywords": [
+    "programming-language",
+    "scripting",
+    "compiler",
+    "transpiler"
+  ],
   "author": "Arjit Sharma",
   "license": "ISC"
 }
