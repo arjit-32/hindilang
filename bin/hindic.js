@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Lexer } = require('../src/Lexer');
-const Parser = require('../src/Parser'); // Or Parser2 if you're using WebAssembly
+const Parser = require('../src/Parser'); 
 const Emitter = require('../src/Emitter');
 const { execSync } = require('child_process');
 
