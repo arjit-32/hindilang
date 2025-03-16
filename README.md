@@ -81,7 +81,8 @@ hindic myscript.hindi
 🛣️ Emit x86 assembly and compile using an assembler (nasm). <br>
 🛣️ Convert code to WebAssembly (WASM) for execution in browsers. <br>
 
-# Contributing 🤝
+# Other Info 🤝
+- Inspired by [TeenyTinyCompiler](https://austinhenley.com/blog/teenytinycompiler1.html)
 - Feel free to open issues or submit PRs.
 - Future plans: A Playground for it to see it run in the browser.
 
