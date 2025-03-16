@@ -5,8 +5,6 @@ class Parser {
         this.emitter = emitter;
         
         this.symbols = new Set();
-        this.labelsDeclared = new Set();
-        this.labelsGotoed = new Set(); 
 
         this.curtoken = null;
         this.peekToken = null;
