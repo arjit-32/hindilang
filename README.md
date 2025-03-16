@@ -1,8 +1,10 @@
-# SudoLanguage 🚀
+# SudoLang: A Hindi-Inspired Programming Language 🚀
 
-A Hindi-inspired scripting language that transpiles to JavaScript. It is done as a Academic exercise to understand working of compilers and programming languages. I was inspired by Austin Henley's Teeny Tiny Compiler. 
+🔗 Full Blog: [Building SudoLang](https://www.csprimer.in/blog/built-a-compiler)
 
-Features 🌟 <br>
+SudoLang is a Hindi-inspired scripting language that transpiles to JavaScript, built as an academic exercise to understand compilers and programming languages.
+
+### Features 🌟 <br>
 ✅ Print Statements – Display output using CHAPO. <br>
 ✅ Variables & Assignment – Declare variables with MANLO. <br>
 ✅ User Input – Take input using PUCHO. <br>
@@ -32,6 +34,20 @@ JABTAK (x < 10) {
 # This is a comment
 ```
 
+### Output 
+```bash
+5
+10 ---> Entered by user
+X bada hai
+5
+6
+7
+8
+9
+10
+
+```
+
 # How to Install & Run
 
 1. Install Globally 
@@ -47,50 +63,23 @@ hindic myscript.hindi
 ```
 
 # How It Works 🔧
-- Lexer 🏷️ – Reads the source code character by character and converts it into tokens. 
-- Parser 📖 – Processes the tokens, checks syntax validity, and structures them into a parse tree.
-- Emitter 💡 – Converts SudoLanguage code into JavaScript for execution.
 
-## Grammar (BNF-like)
-```
-<program> ::= <statement_list>
+### Code Flow 🚀
+📌 package.json – Defines the project and dependencies. <br>
+📌 bin/hindic – Reads .hindi files, compiles, and executes them. <br>
+📌 Lexer – Converts source code into tokens. <br>
+📌 Emitter – Stores and writes transpiled JavaScript. <br>
+📌 Parser – Matches tokens to grammar and generates JavaScript output. <br>
 
-<statement_list> ::= <statement> <newline> <statement_list>
-                   | <statement> <newline>
-                   | ε   (* Empty Line Allowed *)
-
-<statement> ::= <assignment>
-              | <print_statement>
-              | <input_statement>
-              | <if_statement>
-              | <while_loop>
-
-<assignment> ::= "MANLO" <identifier> "=" <expression> ";"
-
-<print_statement> ::= "CHAPO" <expression> ";"
-
-<input_statement> ::= "PUCHO" <identifier> ";"
-
-<if_statement> ::= "AGAR" "(" <condition> ")" "{" <statement_list> "}"
-
-<while_loop> ::= "JABTAK" "(" <condition> ")" "{" <statement_list> "}"
-
-<expression> ::= <term> ( ("+" | "-") <term> )*
-<term> ::= <factor> ( ("*" | "/") <factor> )*
-<factor> ::= <number> | <identifier> | "(" <expression> ")"
-
-<condition> ::= <expression> <comparison_operator> <expression>
-<comparison_operator> ::= "==" | "!=" | ">" | "<" ">=" | "<="
-
-<identifier> ::= [a-zA-Z_][a-zA-Z0-9_]*
-<number> ::= [0-9]+
-```
-
-## Parser Characteristics
+### Parser Characteristics
 ✔️ Top-Down Parsing – Starts from the highest-level structure (program) and drills down into finer details like expressions and numbers. <br>
 ✔️ Recursive Descent – The parser calls itself recursively to process different statements and expressions. <br>
 ✔️ LL(1) Parsing – Uses one token lookahead to determine the next action without backtracking. <br>
 
+### Beyond Transpiling
+🛣️ Use LLVM to generate optimized machine code. <br>
+🛣️ Emit x86 assembly and compile using an assembler (nasm). <br>
+🛣️ Convert code to WebAssembly (WASM) for execution in browsers. <br>
 
 # Contributing 🤝
 - Feel free to open issues or submit PRs.
