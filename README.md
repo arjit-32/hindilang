@@ -1,4 +1,4 @@
-# SudoLang: A Hindi-Inspired Programming Language 🚀
+# hindilang: A Hindi-Inspired Programming Language 🚀
 
 🔗 Full Blog: [Building SudoLang](https://www.csprimer.in/blog/built-a-compiler)
 
