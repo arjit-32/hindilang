@@ -1,5 +1,5 @@
 {
-  "name": "sudolang",
+  "name": "hindilang",
   "version": "1.0.2",
   "description": "A Hindi-inspired scripting language",
   "bin": {
