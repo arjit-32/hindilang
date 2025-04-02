@@ -1,8 +1,8 @@
 # hindilang: A Hindi-Inspired Programming Language 🚀
 
-🔗 Full Blog: [Building SudoLang](https://www.csprimer.in/blog/built-a-compiler)
+🔗 Full Blog: [Building hindilang](https://www.csprimer.in/blog/built-a-compiler)
 
-SudoLang is a Hindi-inspired scripting language that transpiles to JavaScript, built as an academic exercise to understand compilers and programming languages.
+hindilang is a Hindi-inspired scripting language that transpiles to JavaScript, built as an academic exercise to understand compilers and programming languages.
 
 ### Features 🌟 <br>
 ✅ Print Statements – Display output using CHAPO. <br>
@@ -51,9 +51,10 @@ X bada hai
 # How to Install & Run
 
 1. Install Globally 
+Hindilang must be installed globally to work as a CLI tool:
 
 ```bash
-npm install -g sudolang
+npm install -g hindilang
 ```
 
 2. Run your Script
@@ -61,6 +62,7 @@ npm install -g sudolang
 ```bash
 hindic myscript.hindi
 ```
+`Note: Ensure that your npm global bin directory is in your system's PATH if hindic is not recognized.`
 
 # How It Works 🔧
 
