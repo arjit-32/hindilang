@@ -19,9 +19,6 @@ hindilang is a Hindi-inspired scripting language that transpiles to JavaScript, 
 MANLO x = 5;
 CHAPO x;
 
-PUCHO y;
-CHAPO y;
-
 AGAR (x > 3) {
     CHAPO "X bada hai!";
 }
@@ -37,7 +34,6 @@ JABTAK (x < 10) {
 ### Output 
 ```bash
 5
-10 ---> Entered by user
 X bada hai
 5
 6
