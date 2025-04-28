@@ -1,6 +1,6 @@
 # hindilang: A Hindi-Inspired Programming Language 🚀
 
-🔗 Full Blog: [Building hindilang](https://www.csprimer.in/blog/built-a-compiler)
+🔗 Full Blog: [Building my own Programming Language](https://www.csprimer.in/blog/built-a-compiler)
 
 hindilang is a Hindi-inspired scripting language that transpiles to JavaScript, built as an academic exercise to understand compilers and programming languages.
 
@@ -13,36 +13,70 @@ hindilang is a Hindi-inspired scripting language that transpiles to JavaScript, 
 ✅ Loops – Use JABTAK (while) for iterations. <br>
 ✅ Comments – Use # for comments. <br>
 
-# Example Code
+## A Quick Taste of hindilang
 
-```
+Here are some examples
+
+1. **Variables and Printing**
+```javascript
 MANLO x = 5;
 CHAPO x;
+
+// Output
+5
+```
+
+2. **Taking User Input**
+
+```javascript
+PUCHO y;
+CHAPO y;
+
+// (If user enters 10)
+// Output is 10
+```
+
+3. **Conditional Statements (if)**
+
+```javascript
+MANLO x = 5;
 
 AGAR (x > 3) {
     CHAPO "X bada hai!";
 }
+
+// Output
+// X bada hai
+```
+
+4. **Loops (while)**
+
+```javascript
+MANLO x = 5;
 
 JABTAK (x < 10) {
     CHAPO x;
     MANLO x = x + 1;
 }
 
-# This is a comment
+// Output
+// 5
+// 6
+// 7
+// 8
+// 9
+// 10
 ```
 
-### Output 
-```bash
-5
-X bada hai
-5
-6
-7
-8
-9
-10
 
+5. **Comments**
+
+```javascript
+# Yeh ek comment hai
+
+//(Comments are ignored during execution)
 ```
+
 
 # How to Install & Run
 
