@@ -1,6 +1,6 @@
 # hindilang: A Hindi-Inspired Programming Language 🚀
 
-🔗 Full Blog: [Building my own Programming Language](https://www.csprimer.in/blog/built-a-compiler)
+🔗 Full Blog: [Building my own Programming Language](https://www.csprimer.in/articles/built-a-compiler)
 
 hindilang is a Hindi-inspired scripting language that transpiles to JavaScript, built as an academic exercise to understand compilers and programming languages.
 
