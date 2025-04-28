@@ -23,7 +23,7 @@ MANLO x = 5;
 CHAPO x;
 
 // Output
-5
+// 5
 ```
 
 2. **Taking User Input**
