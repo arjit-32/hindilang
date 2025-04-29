@@ -1,0 +1,9 @@
+PUCHO n;
+MANLO count=0;
+
+JABTAK (n>=1){
+    MANLO n=n/10;
+    MANLO count=count+1;
+}
+
+CHAPO count; 

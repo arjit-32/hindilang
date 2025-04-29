@@ -2,13 +2,15 @@
 
 const fs = require('fs');
 const path = require('path');
+const packageJson = require('../package.json');
 const { Lexer } = require('../src/Lexer');
 const Parser = require('../src/Parser'); 
 const Emitter = require('../src/Emitter');
 const { execSync } = require('child_process');
 
+
 if (process.argv.includes("--version")) {
-  console.log(`SudoLanguage version ${packageJson.version}`);
+  console.log(`hindilang version ${packageJson.version}`);
   process.exit(0);
 }
 

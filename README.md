@@ -76,7 +76,7 @@ JABTAK (x < 10) {
 
 //(Comments are ignored during execution)
 ```
-
+---
 
 # How to Install & Run
 
@@ -93,6 +93,43 @@ npm install -g hindilang
 hindic myscript.hindi
 ```
 `Note: Ensure that your npm global bin directory is in your system's PATH if hindic is not recognized.`
+
+---
+
+**Troubleshooting: "hindic not recognized" Problem**
+
+If after installing you see an error like:
+
+```bash
+'hindic' is not recognized as an internal or external command
+```
+
+follow these steps:
+
+Check your global npm bin directory:
+Run the following command to find where npm installs global executables:
+
+```bash
+npm prefix -g
+```
+Typically, on Windows, this will be something like:
+```plaintext
+C:\Users\<YourUsername>\AppData\Roaming\npm
+```
+
+Add the directory to your PATH (if it's missing):
+- Temporary fix (only for the current terminal session):
+    ```powershell
+    $env:Path += ";C:\Users\<YourUsername>\AppData\Roaming\npm"
+    ```
+- Permanent fix (persists across restarts):
+In PowerShell, run:
+    ```powershell
+    [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Users\<YourUsername>\AppData\Roaming\npm", "User")
+    ```
+Restart your terminal after making changes !
+
+---
 
 # How It Works 🔧
 
@@ -112,6 +149,8 @@ hindic myscript.hindi
 🛣️ Use LLVM to generate optimized machine code. <br>
 🛣️ Emit x86 assembly and compile using an assembler (nasm). <br>
 🛣️ Convert code to WebAssembly (WASM) for execution in browsers. <br>
+
+---
 
 # Other Info 🤝
 - Inspired by [TeenyTinyCompiler](https://austinhenley.com/blog/teenytinycompiler1.html)
